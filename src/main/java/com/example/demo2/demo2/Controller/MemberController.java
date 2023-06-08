@@ -27,9 +27,14 @@ public class MemberController {
         MemberDto loginresult = memberService.login(memberDto);
         if(loginresult!=null){
             session.setAttribute("loginId",loginresult.getMemberId());
+            String temp = loginresult.getMemberId();
+            if(temp.equals("admin")){
+                return "admin";
+            }
             return "main";
         }else{
             return "index";
         }
     }
+
 }

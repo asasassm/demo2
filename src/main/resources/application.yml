@@ -13,6 +13,10 @@ spring:
     password: '1592362!'
   thymeleaf:
     cache: false
+#  sql:
+#    init:
+#      mode: always
+
 
   # spring data jpa 설정
   jpa:
@@ -22,3 +26,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+#    defer-datasource-initialization: true
+
+

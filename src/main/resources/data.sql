@@ -1,0 +1,1 @@
+insert into member_table(member_id,member_pw) values('admin','admin');

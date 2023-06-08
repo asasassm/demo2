@@ -9,4 +9,10 @@ public class IndexController {
     public String index(){return "index";}
     @GetMapping("/savemember")
     public String signup(){return "savemember";}
+    @GetMapping("admin")
+    public String adminpage(){return "admin";}
+    @GetMapping("/memberList")
+    public String memberList(){
+        return "memberList";
+    }
 }
