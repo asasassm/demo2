@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko" >
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>로그인</title>
+</head>
+<body>
+<form action="/Member/login" method="post">
+    아이디 : <input type="text" name = "memberId"><br>
+    비밀번호 : <input type="password" name = "memberPw"><br>
+    <input type="submit" value="로그인"><br>
+
+
+
+</form>
+<button th:onclick="|location.href='@{savemember}'|">회원 가입</button>
+
+
+
+</body>
+</html>
