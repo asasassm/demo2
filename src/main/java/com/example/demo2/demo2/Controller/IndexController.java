@@ -2,6 +2,7 @@ package com.example.demo2.demo2.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class IndexController {
@@ -11,8 +12,8 @@ public class IndexController {
     public String signup(){return "savemember";}
     @GetMapping("admin")
     public String adminpage(){return "admin";}
-    @GetMapping("/memberList")
-    public String memberList(){
-        return "memberList";
-    }
+
+
+
+
 }

@@ -6,6 +6,8 @@ import com.example.demo2.demo2.Repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,6 +41,51 @@ private final MemberRepository memberRepository;
         }else{
             //결과 없음
             return null;
+        }
+
+    }
+
+    public List<MemberDto> findAll() {
+        List<MemberEntity> memberEntityList = memberRepository.findAll();
+        List<MemberDto> memberDtoList = new ArrayList<>();
+        for(MemberEntity memberEntity: memberEntityList){
+            memberDtoList.add(MemberDto.toMemberDTO(memberEntity));
+
+        }
+        return memberDtoList;
+    }
+
+    public MemberDto findByNum(Long num) {
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findByNum(num);
+        if(optionalMemberEntity.isPresent()){
+            return MemberDto.toMemberDTO(optionalMemberEntity.get());
+        }else return null;
+    }
+
+
+    public MemberDto updateForm(String myId) {
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findByMemberId(myId);
+        if(optionalMemberEntity.isPresent()){
+            return MemberDto.toMemberDTO(optionalMemberEntity.get());
+        }else {
+            return null;
+        }
+    }
+
+    public void update(MemberDto memberDto) {
+        memberRepository.save(MemberEntity.toUpdateMemberEntity(memberDto));
+    }
+
+    public void deleteByNum(Long num) {
+        memberRepository.deleteById(num);
+    }
+
+    public String idCheck(String memberId) {
+        Optional<MemberEntity> byMemberId = memberRepository.findByMemberId(memberId);
+        if(byMemberId.isPresent()){
+            return null;
+        }else {
+            return "ok";
         }
 
     }
